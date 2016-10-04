@@ -20,29 +20,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <p>An example of <code>&lt;proportional-height-box&gt;</code>:</p>
 
-    <p>Make words! <button id="saybtn">Say Something</button></p>
-    <p>Make lasers! <button id="laserbtn">Fire lasers</button></p>
-
-    <proportional-height-box author='{"name": "Lord Meowser", "image": "http://lorempixel.com/g/300/200/cats/"}' fancy>
-      <h2>Hello proportional-height-box</h2>
+    <p>Try resizing your browser</p>
+    <proportional-height-box width="300" height="200">
+	<img src="http://lorempixel.com/g/300/200/cats/" />
     </proportional-height-box>
-
-    <script>
-      var seedElement = document.querySelector('proportional-height-box');
-
-      document.querySelector('#saybtn').addEventListener('click', function() {
-        alert(seedElement.sayHello('Hallo!'));
-      });
-
-      document.querySelector('#laserbtn').addEventListener('click', function() {
-        seedElement.fireLasers();
-      });
-
-      document.addEventListener("proportional-height-box-lasers", function(e) {
-        console.log(e.detail.sound);
-      });
-
-    </script>
 
   </body>
 </html>
