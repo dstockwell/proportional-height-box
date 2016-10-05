@@ -5,6 +5,8 @@ A block-level element that resizes proportionally.
 
 Based on code from fitvids.js (http://fitvidsjs.com/)
 
+The `width` and `height` parameters specify a proportional ratio, **not the exact size**.
+
 @demo demo/index.html
 -->
 
@@ -35,32 +37,41 @@ Based on code from fitvids.js (http://fitvidsjs.com/)
     </div>
 
   </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+
+        is: 'proportional-height-box',
+
+        properties: {
+          /* The width proportion */
+          width: {
+            type: Number,
+            value: 4
+          },
+          /* The height proportion */
+          height: {
+            type: Number,
+            value: 3
+          },
+          /* The CSS styling to ensure proporitonality */
+          _heightStyle: {
+            type: String,
+            computed: '_computeStyle(width, height)'
+          }
+        },
+
+        /* Computes the CSS styling for _heightStyle */
+        _computeStyle: function(width, height) {
+          var ratio = (height / width) * 100;
+          return `padding-top: ${ratio}%`;
+        }
+
+      });
+
+    }());
+  </script>
 </dom-module>
-
-<script>
-(function() {
-  window.Polymer({
-    is: 'proportional-height-box',
-
-    properties: {
-      width: {
-        type: Number,
-        value: 4
-      },
-      height: {
-        type: Number,
-        value: 3
-      },
-      _heightStyle: {
-        type: String,
-        computed: 'computeStyle(width, height)'
-      }
-    },
-
-    computeStyle: function(width, height) {
-      var ratio = (height / width) * 100;
-      return 'padding-top:' + ratio + '%';
-    }
-  });
-})();
-</script>
