@@ -1,19 +1,26 @@
 <link rel="import" href="../polymer/polymer.html" />
+<!--
+`proportional-height-box`
+A block-level element that resizes proportionally.
+
+Based on code from fitvids.js (http://fitvidsjs.com/)
+
+@demo demo/index.html
+-->
 
 <dom-module id="proportional-height-box">
   <template>
 
     <style>
-        :host {
-            display: block;
-            width: 100%;
-        }
+      :host {
+        display: block;
+        width: 100%;
+      }
       #proportional {
         position: relative;
         display: block;
         height: 0;
       }
-
       #proportional > ::content > * {
         position: absolute;
         display: block;
@@ -23,7 +30,7 @@
       }
     </style>
 
-    <div id="proportional" style$="[[heightStyle]]">
+    <div id="proportional" style$="[[_heightStyle]]">
       <content></content>
     </div>
 
@@ -44,7 +51,7 @@
         type: Number,
         value: 3
       },
-      heightStyle: {
+      _heightStyle: {
         type: String,
         computed: 'computeStyle(width, height)'
       }
