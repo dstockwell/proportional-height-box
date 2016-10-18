@@ -13,17 +13,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <title>proportional-height-box Demo</title>
-    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <!-- <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html"> -->
+
     <link rel="import" href="../proportional-height-box.html">
   </head>
-  <body unresolved>
+  <body>
 
-    <p>An example of <code>&lt;proportional-height-box&gt;</code>:</p>
+    <custom-style>
+      <style>
+        .centered {
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      </style>
+    </custom-style>
 
-    <p>Try resizing your browser</p>
-    <proportional-height-box width="300" height="200">
-	<img src="http://lorempixel.com/g/300/200/cats/" />
-    </proportional-height-box>
-
+    <div class="vertical-section-container centered">
+      <h3>An example of <code>&lt;proportional-height-box&gt;</code>:</h3>
+      <p>Try resizing your browser</p>
+      <demo-snippet>
+        <template>
+          <proportional-height-box width="300" height="200">
+            <img src="http://lorempixel.com/g/300/200/cats/" />
+          </proportional-height-box>
+         </template>
+       </demo-snippet>
+     </div>
   </body>
 </html>

@@ -23,7 +23,7 @@ The `width` and `height` parameters specify a proportional ratio, **not the exac
         display: block;
         height: 0;
       }
-      #proportional > ::content > * {
+      ::slotted(*) {
         position: absolute;
         display: block;
         width: 100%;
@@ -33,7 +33,7 @@ The `width` and `height` parameters specify a proportional ratio, **not the exac
     </style>
 
     <div id="proportional" style$="[[_heightStyle]]">
-      <content></content>
+      <slot></slot>
     </div>
 
   </template>
@@ -42,36 +42,38 @@ The `width` and `height` parameters specify a proportional ratio, **not the exac
     (function() {
       'use strict';
 
-      Polymer({
-
-        is: 'proportional-height-box',
-
-        properties: {
-          /* The width proportion */
-          width: {
-            type: Number,
-            value: 4
-          },
-          /* The height proportion */
-          height: {
-            type: Number,
-            value: 3
-          },
-          /* The CSS styling to ensure proporitonality */
-          _heightStyle: {
-            type: String,
-            computed: '_computeStyle(width, height)'
+      class ProportionalHeightBox extends Polymer.Element {
+        static get is() { return 'proportional-height-box'; }
+        static get config() {
+          return {
+            properties: {
+              /* The width proportion */
+              width: {
+                type: Number,
+                value: 4
+              },
+              /* The height proportion */
+              height: {
+                type: Number,
+                value: 3
+              },
+              /* The CSS styling to ensure proporitonality */
+              _heightStyle: {
+                type: String,
+                computed: '_computeStyle(width, height)'
+              }
+            }
           }
-        },
+        }
 
         /* Computes the CSS styling for _heightStyle */
-        _computeStyle: function(width, height) {
+        _computeStyle(width, height) {
           var ratio = (height / width) * 100;
           return `padding-top: ${ratio}%`;
         }
+      }
 
-      });
-
+      customElements.define(ProportionalHeightBox.is, ProportionalHeightBox);
     }());
   </script>
 </dom-module>
